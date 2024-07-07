@@ -29,3 +29,5 @@ rootProject.name = "BookFlex"
 include(":app")
 include(":folioreader")
 include(":booklist")
+include(":di")
+include(":database")
