@@ -1,7 +1,7 @@
 package com.khairy.booklist.datasource.model.response
 
 data class BookDto(
-    val id: Int,
+    val size: Long,
     val title: String,
     val author: String
 )

@@ -17,7 +17,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://bookflex-305ca4bbd30f.herokuapp.com/")
+            .baseUrl("https://bookflex-305ca4bbd30f.herokuapp.com/s3")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

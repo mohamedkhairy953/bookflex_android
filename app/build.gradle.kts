@@ -65,16 +65,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
     implementation("androidx.compose.foundation:foundation:1.6.8")
-    implementation("com.google.dagger:hilt-android:2.49")
+    hilt()
+
     // Retrofit
     retrofit()
-    // Hilt
-    hilt()
     // Coroutines
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
-    implementation(libs.androidx.hilt.navigation.compose)
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -90,13 +87,13 @@ fun DependencyHandlerScope.modules() {
     implementation(project(":booklist"))
 }
 
-fun DependencyHandlerScope.hilt() {
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-compiler:2.44")
-}
-
 fun DependencyHandlerScope.retrofit() {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Or another converter of your choice
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+}
+
+fun DependencyHandlerScope.hilt() {
+    implementation(libs.hilt.android) // or the latest version
+    kapt(libs.hilt.compiler) // or the latest version
 }

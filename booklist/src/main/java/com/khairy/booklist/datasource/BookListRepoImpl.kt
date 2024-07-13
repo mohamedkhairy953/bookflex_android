@@ -5,8 +5,9 @@ import com.khairy.booklist.datasource.cache.entity.BookEntity
 import com.khairy.booklist.datasource.remote.BookListService
 import com.khairy.booklist.mappers.BookDtoToEntityMapper
 import com.khairy.booklist.model.BookModel
+import javax.inject.Inject
 
-class BookListRepoImpl(
+class BookListRepoImpl @Inject constructor(
     private val bookListService: BookListService,
     private val bookListDao: BookListDao,
     private val bookDtoToEntityMapper: BookDtoToEntityMapper

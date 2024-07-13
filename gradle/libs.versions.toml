@@ -1,4 +1,5 @@
 [versions]
+activityCompose = "1.9.0"
 agp = "8.4.0"
 eventbus = "3.3.1"
 gson = "2.10.1"
@@ -9,13 +10,15 @@ junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
-kotlinStdlib = "1.9.24"
+kotlinStdlib = "2.0.0"
 library = "1.2.0"
 lifecycleExtensions = "2.2.0"
 lifecycleLivedataKtx = "2.4.0"
+lifecycleRuntimeKtx = "2.8.3"
 lifecycleViewmodelKtx = "2.4.0"
 material = "1.12.0"
 constraintlayout = "2.1.4"
+materialVersion = "1.6.8"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
 hiltNavigationCompose = "1.2.0"
@@ -31,15 +34,22 @@ roomRuntime = "2.6.1"
 slf4jAndroid = "1.7.25"
 springCore = "4.3.19.RELEASE"
 core = "1.44.0"
+ui = "1.6.8"
 
 
 [libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationFragmentKtx" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "ui" }
 codetoart-r2-streamer-kotlin = { module = "com.github.codetoart:r2-streamer-kotlin", version.ref = "r2StreamerKotlin" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 converter-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "retrofit" }

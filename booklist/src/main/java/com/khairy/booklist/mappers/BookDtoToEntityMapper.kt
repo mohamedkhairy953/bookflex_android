@@ -15,7 +15,7 @@ import com.khairy.booklist.datasource.model.response.BookDto
 class BookDtoToEntityMapper {
     fun map(bookDto: BookDto): BookEntity {
         return BookEntity(
-            id = bookDto.id,
+            size = bookDto.size,
             title = bookDto.title,
             author = bookDto.author
         )

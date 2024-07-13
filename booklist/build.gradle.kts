@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("kapt")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -53,11 +54,9 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
+    compose()
     room()
 }
-
-// Apply the Hilt plugin
-apply(plugin = "dagger.hilt.android.plugin")
 
 fun DependencyHandlerScope.room() {
     implementation(libs.androidx.room.runtime)
@@ -67,4 +66,14 @@ fun DependencyHandlerScope.room() {
     implementation(libs.room.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.livedata.ktx)
+}
+
+fun DependencyHandlerScope.compose() {
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
 }

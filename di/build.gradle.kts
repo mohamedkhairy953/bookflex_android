@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("kapt")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -54,6 +55,3 @@ dependencies {
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
 }
-
-// Apply the Hilt plugin
-apply(plugin = "dagger.hilt.android.plugin")

@@ -4,6 +4,6 @@ import com.khairy.booklist.datasource.model.response.BookDto
 import retrofit2.http.GET
 
 interface BookListService {
-    @GET("books")
+    @GET("/epub/list")
     suspend fun getBooks(): List<BookDto>
 }

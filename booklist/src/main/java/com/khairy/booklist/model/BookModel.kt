@@ -1,7 +1,7 @@
 package com.khairy.booklist.model
 
 data class BookModel(
-    val id: Int,
+    val size: Long,
     val title: String,
     val author: String
 )
