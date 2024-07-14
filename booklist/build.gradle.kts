@@ -2,7 +2,9 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    id("androidx.room")
+    alias(libs.plugins.daggerHilt)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -31,6 +33,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+        compose = true
+    }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
 }
 
 dependencies {
@@ -54,26 +64,26 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
+    implementation(libs.gson)
     compose()
     room()
+    implementation(project(":di"))
 }
 
 fun DependencyHandlerScope.room() {
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
-
-    // Optional: Kotlin extensions and Coroutines support
-    implementation(libs.room.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
+    kapt(libs.androidx.room.kts)
+    kapt(libs.androidx.room.paging3)
 }
 
 fun DependencyHandlerScope.compose() {
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.material)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.ui.compose)
+    implementation(libs.androidx.material.compose)
+    implementation(libs.androidx.ui.tooling.preview.compose)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.compose)
+    implementation(libs.androidx.foundation.compose)
 }

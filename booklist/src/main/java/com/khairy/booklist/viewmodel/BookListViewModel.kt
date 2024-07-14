@@ -20,7 +20,7 @@ class BookListViewModel @Inject constructor(
     private val _bookListState = MutableStateFlow<BookListState>(BookListState.Idle)
     val bookListState: StateFlow<BookListState> = _bookListState.asStateFlow()
 
-    private fun fetchBooks() {
+    fun fetchBooks() {
         _bookListState.value = BookListState.Loading
         viewModelScope.launch {
             try {

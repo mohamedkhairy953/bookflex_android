@@ -12,6 +12,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import javax.inject.Singleton
 
 /**
  * ...
@@ -32,6 +33,7 @@ object BookListModule {
     }
 
     @Provides
+    @Singleton
     fun provideBookListService(retrofit: Retrofit): BookListService {
         return retrofit.create(BookListService::class.java)
     }

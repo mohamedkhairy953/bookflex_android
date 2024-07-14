@@ -1,21 +1,20 @@
 [versions]
-activityCompose = "1.9.0"
-agp = "8.4.0"
+agp = "8.5.0"
 eventbus = "3.3.1"
 gson = "2.10.1"
-jackson = "2.9.9"
-kotlin = "1.9.24"
+jackson = "2.15.2"
+kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-appcompat = "1.6.1"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
 kotlinStdlib = "2.0.0"
 library = "1.2.0"
 lifecycleExtensions = "2.2.0"
-lifecycleLivedataKtx = "2.4.0"
+lifecycleLivedataKtx = "2.8.3"
 lifecycleRuntimeKtx = "2.8.3"
-lifecycleViewmodelKtx = "2.4.0"
+lifecycleViewmodelKtx = "2.8.3"
 material = "1.12.0"
 constraintlayout = "2.1.4"
 materialVersion = "1.6.8"
@@ -26,30 +25,35 @@ r2SharedKotlin = "1.0.4-2"
 r2StreamerKotlin = "1.0.4-2"
 recyclerview = "1.3.2"
 retrofit = "2.9.0"
-hilt = "2.49"
+hiltVersion = "2.49"
 coroutines = "1.7.3"
-roomCompiler = "2.6.1"
-roomKtx = "2.6.1"
-roomRuntime = "2.6.1"
+roomVersion = "2.6.1"
 slf4jAndroid = "1.7.25"
 springCore = "4.3.19.RELEASE"
 core = "1.44.0"
-ui = "1.6.8"
-
+activityCompose = "1.9.0"
+foundationCompose = "1.6.8"
+uiComposeVersion = "1.6.8"
+lifecycleViewmodelCompose = "2.8.3"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+androidx-lifecycle-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+androidx-foundation-compose = { module = "androidx.compose.foundation:foundation", version.ref = "foundationCompose" }
+androidx-material-compose = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationFragmentKtx" }
+androidx-ui-compose = { module = "androidx.compose.ui:ui", version.ref = "uiComposeVersion" }
+androidx-ui-tooling-preview-compose = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiComposeVersion" }
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
-androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
-androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationFragmentKtx" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
-androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
-androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
-androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
-androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "ui" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
+androidx-room-kts = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
+androidx-room-paging3 = { module = "androidx.room:room-paging", version.ref = "roomVersion" }
 codetoart-r2-streamer-kotlin = { module = "com.github.codetoart:r2-streamer-kotlin", version.ref = "r2StreamerKotlin" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 converter-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "retrofit" }
@@ -67,7 +71,6 @@ kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "
 lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 r2-shared-kotlin = { module = "com.github.codetoart:r2-shared-kotlin", version.ref = "r2SharedKotlin" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 spring-core = { module = "org.springframework:spring-core", version.ref = "springCore" }
 swipeLayour = { module = "com.daimajia.swipelayout:library", version.ref = "library" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
@@ -77,8 +80,8 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 slf4j-android = { module = "org.slf4j:slf4j-android", version.ref = "slf4jAndroid" }
 core = { group = "com.google.ar", name = "core", version.ref = "core" }
-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
@@ -86,4 +89,6 @@ coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutin
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
-daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+

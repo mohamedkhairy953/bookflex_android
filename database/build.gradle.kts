@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    id("androidx.room")
+    alias(libs.plugins.daggerHilt)
 }
 
 android {
@@ -32,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
 }
 dependencies {
 
@@ -49,6 +53,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.extensions)
     implementation(libs.androidx.recyclerview)
     implementation(libs.converter.gson)
+    implementation(libs.gson)
     implementation(libs.retrofit)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
@@ -60,17 +65,12 @@ dependencies {
 fun DependencyHandlerScope.room() {
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
-
-    // Optional: Kotlin extensions and Coroutines support
-    implementation(libs.room.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
+    kapt(libs.androidx.room.kts)
+    kapt(libs.androidx.room.paging3)
 }
 /**
  * Add the modules to the project
  */
 fun DependencyHandlerScope.modules() {
-    implementation(project(":folioreader"))
-    implementation(project(":di"))
     implementation(project(":booklist"))
 }

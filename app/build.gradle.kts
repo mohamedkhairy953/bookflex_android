@@ -2,7 +2,9 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    id("androidx.room")
+    alias(libs.plugins.daggerHilt)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -39,13 +41,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
-    }
 
     buildFeatures {
         viewBinding = true
         compose = true
+    }
+    room {
+        schemaDirectory("$projectDir/schemas")
     }
 }
 //noinspection UseTomlInstead
@@ -57,16 +59,10 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.kotlin.stdlib)
-    implementation("androidx.compose.ui:ui:1.6.8")
-    implementation("androidx.compose.material:material:1.6.8")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.6.8")
-    implementation("androidx.activity:activity-compose:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.3")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
-    implementation("androidx.compose.foundation:foundation:1.6.8")
     hilt()
-
+    implementation(libs.gson)
     // Retrofit
     retrofit()
     // Coroutines
@@ -76,6 +72,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     modules()
+    compose()
 }
 
 /**
@@ -85,6 +82,7 @@ fun DependencyHandlerScope.modules() {
     implementation(project(":folioreader"))
     implementation(project(":di"))
     implementation(project(":booklist"))
+    implementation(project(":database"))
 }
 
 fun DependencyHandlerScope.retrofit() {
@@ -96,4 +94,22 @@ fun DependencyHandlerScope.retrofit() {
 fun DependencyHandlerScope.hilt() {
     implementation(libs.hilt.android) // or the latest version
     kapt(libs.hilt.compiler) // or the latest version
+}
+
+fun DependencyHandlerScope.compose() {
+    implementation(libs.androidx.ui.compose)
+    implementation(libs.androidx.material.compose)
+    implementation(libs.androidx.ui.tooling.preview.compose)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.compose)
+    implementation(libs.androidx.foundation.compose)
+}
+
+fun DependencyHandlerScope.room() {
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.kts)
+    kapt(libs.androidx.room.paging3)
 }
