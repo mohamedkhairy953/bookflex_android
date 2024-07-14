@@ -1,6 +1,6 @@
 package com.khairy.booklist.mappers
 
-import com.khairy.booklist.datasource.cache.entity.BookEntity
+import com.khairy.enitities.BookEntity
 import com.khairy.booklist.datasource.model.response.BookDto
 
 /**

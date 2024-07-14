@@ -1,10 +1,9 @@
 package com.khairy.booklist.datasource
 
-import com.khairy.booklist.datasource.cache.BookListDao
-import com.khairy.booklist.datasource.cache.entity.BookEntity
+import com.khairy.daos.BookListDao
+import com.khairy.enitities.BookEntity
 import com.khairy.booklist.datasource.remote.BookListService
 import com.khairy.booklist.mappers.BookDtoToEntityMapper
-import com.khairy.booklist.model.BookModel
 import javax.inject.Inject
 
 class BookListRepoImpl @Inject constructor(

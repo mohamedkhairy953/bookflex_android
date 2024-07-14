@@ -39,7 +39,11 @@ fun BookListScreen(viewModel: BookListViewModel = hiltViewModel()) {
         }
 
         is BookListState.Loading -> {
-            Column {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
+                verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
+            ) {
                 CircularProgressIndicator()
                 Text(text = "Loading...")
             }

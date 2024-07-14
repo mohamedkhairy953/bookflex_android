@@ -62,7 +62,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
     hilt()
-    implementation(libs.gson)
+    api(libs.gson)
     // Retrofit
     retrofit()
     // Coroutines

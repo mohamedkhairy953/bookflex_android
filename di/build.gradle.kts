@@ -54,5 +54,4 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
-    implementation(libs.gson)
 }

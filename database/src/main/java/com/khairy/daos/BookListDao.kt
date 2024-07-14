@@ -1,9 +1,9 @@
-package com.khairy.booklist.datasource.cache
+package com.khairy.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.khairy.booklist.datasource.cache.entity.BookEntity
+import com.khairy.enitities.BookEntity
 
 /**
  * ...
@@ -18,10 +18,10 @@ import com.khairy.booklist.datasource.cache.entity.BookEntity
 interface BookListDao {
 
     @Query("SELECT * FROM books")
-    abstract fun getAllBooks(): List<BookEntity>
+    suspend fun getAllBooks(): List<BookEntity>
 
     @Insert
-    abstract fun insertBooks(books: List<BookEntity>)
+    suspend fun insertBooks(books: List<BookEntity>)
 
 
 }

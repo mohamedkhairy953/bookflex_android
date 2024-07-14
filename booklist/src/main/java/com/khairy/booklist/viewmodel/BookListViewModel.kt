@@ -2,7 +2,6 @@ package com.khairy.booklist.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.khairy.booklist.datasource.cache.entity.BookEntity
 import com.khairy.booklist.model.BookModel
 import com.khairy.booklist.usecase.BookListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

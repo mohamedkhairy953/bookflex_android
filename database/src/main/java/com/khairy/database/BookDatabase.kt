@@ -4,10 +4,10 @@ package com.khairy.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.khairy.booklist.datasource.cache.BookListDao
-import com.khairy.booklist.datasource.cache.entity.BookEntity
+import com.khairy.daos.BookListDao
+import com.khairy.enitities.BookEntity
 
-@Database(entities = [BookEntity::class], version = 1, exportSchema = false)
+@Database(entities = [BookEntity::class], version = 1)
 abstract class BookDatabase : RoomDatabase() {
 
     abstract fun bookDao(): BookListDao

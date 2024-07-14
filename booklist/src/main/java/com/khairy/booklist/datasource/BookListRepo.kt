@@ -1,7 +1,6 @@
 package com.khairy.booklist.datasource
 
-import com.khairy.booklist.datasource.cache.entity.BookEntity
-import com.khairy.booklist.model.BookModel
+import com.khairy.enitities.BookEntity
 
 /**
  * ...

@@ -64,17 +64,17 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
-    implementation(libs.gson)
     compose()
     room()
     implementation(project(":di"))
+    implementation(project(":database"))
 }
 
 fun DependencyHandlerScope.room() {
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
-    kapt(libs.androidx.room.kts)
-    kapt(libs.androidx.room.paging3)
+    implementation(libs.androidx.room.kts)
+    implementation(libs.androidx.room.paging3)
 }
 
 fun DependencyHandlerScope.compose() {

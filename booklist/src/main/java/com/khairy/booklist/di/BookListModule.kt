@@ -2,11 +2,12 @@ package com.khairy.booklist.di
 
 import com.khairy.booklist.datasource.BookListRepo
 import com.khairy.booklist.datasource.BookListRepoImpl
-import com.khairy.booklist.datasource.cache.BookListDao
+import com.khairy.daos.BookListDao
 import com.khairy.booklist.datasource.remote.BookListService
 import com.khairy.booklist.mappers.BookDtoToEntityMapper
 import com.khairy.booklist.mappers.BookEntityToModelMapper
 import com.khairy.booklist.usecase.BookListUseCase
+import com.khairy.database.BookDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -49,6 +50,11 @@ object BookListModule {
             bookDtoToEntityMapper = bookDtoToEntityMapper,
             bookListDao = bookListDao
         )
+    }
+
+    @Provides
+    fun provideBookListDao(db: BookDatabase): BookListDao {
+        return db.bookDao()
     }
 
     @Provides
