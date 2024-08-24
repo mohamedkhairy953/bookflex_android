@@ -18,7 +18,7 @@ class BookListRepoImpl @Inject constructor(
      */
     override suspend fun getBooks(): List<BookEntity> {
         val books = bookListService.getBooks()
-        val bookEntities = books.map { bookDtoToEntityMapper.map(it) }
+        val bookEntities = books.distinct().map { bookDtoToEntityMapper.map(it) }
         bookListDao.insertBooks(bookEntities)
         return bookListDao.getAllBooks()
     }

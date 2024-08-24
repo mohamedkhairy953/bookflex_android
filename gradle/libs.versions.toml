@@ -1,6 +1,7 @@
 [versions]
 agp = "8.5.1"
 eventbus = "3.3.1"
+fuel = "1.12.0"
 gson = "2.10.1"
 jackson = "2.15.2"
 kotlin = "2.0.0"
@@ -12,9 +13,9 @@ appcompat = "1.7.0"
 kotlinStdlib = "2.0.0"
 library = "1.2.0"
 lifecycleExtensions = "2.2.0"
-lifecycleLivedataKtx = "2.8.3"
-lifecycleRuntimeKtx = "2.8.3"
-lifecycleViewmodelKtx = "2.8.3"
+lifecycleLivedataKtx = "2.8.4"
+lifecycleRuntimeKtx = "2.8.4"
+lifecycleViewmodelKtx = "2.8.4"
 material = "1.12.0"
 constraintlayout = "2.1.4"
 materialVersion = "1.6.8"
@@ -34,7 +35,8 @@ core = "1.44.0"
 activityCompose = "1.9.0"
 foundationCompose = "1.6.8"
 uiComposeVersion = "1.6.8"
-lifecycleViewmodelCompose = "2.8.3"
+lifecycleViewmodelCompose = "2.8.4"
+runtimeLivedata = "1.6.8"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -58,6 +60,7 @@ codetoart-r2-streamer-kotlin = { module = "com.github.codetoart:r2-streamer-kotl
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 converter-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "retrofit" }
 eventbus = { module = "org.greenrobot:eventbus", version.ref = "eventbus" }
+fuel = { module = "com.github.kittinunf.fuel:fuel", version.ref = "fuel" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
@@ -84,6 +87,7 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

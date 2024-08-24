@@ -138,6 +138,8 @@ dependencies {
     // R2 modules
     api("com.github.codetoart:r2-shared-kotlin:$versions.r2SharedKotlin") {
         changing = true
+        exclude group: 'com.github.kittinunf.fuel', module: 'fuel-android'
+        exclude group: 'com.github.kittinunf.fuel', module: 'fuel'
     }
     api("com.github.codetoart:r2-streamer-kotlin:$versions.r2StreamerKotlin") {
         exclude group: "org.slf4j", module: "slf4j-api"

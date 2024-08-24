@@ -1,5 +1,6 @@
 package com.khairy.booklist.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.khairy.booklist.model.BookModel
@@ -15,6 +16,7 @@ import javax.inject.Inject
 class BookListViewModel @Inject constructor(
     private val getBooksUseCase: BookListUseCase,
 ) : ViewModel() {
+    val TAG = "BookListViewModel"
 
     private val _bookListState = MutableStateFlow<BookListState>(BookListState.Idle)
     val bookListState: StateFlow<BookListState> = _bookListState.asStateFlow()
@@ -26,6 +28,8 @@ class BookListViewModel @Inject constructor(
                 val bookList = getBooksUseCase()
                 _bookListState.value = BookListState.Success(bookList)
             } catch (e: Exception) {
+                e.printStackTrace()
+                Log.d(TAG, "fetchBooks: ${e.message}")
                 _bookListState.value = BookListState.Error(e.message ?: "An error occurred")
             }
         }

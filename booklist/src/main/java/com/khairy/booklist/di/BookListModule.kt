@@ -33,11 +33,11 @@ object BookListModule {
         return BookDtoToEntityMapper()
     }
 
-    @Provides
-    @Singleton
-    fun provideBookListService(retrofit: Retrofit): BookListService {
-        return retrofit.create(BookListService::class.java)
-    }
+        @Provides
+        @Singleton
+        fun provideBookListService(retrofit: Retrofit): BookListService {
+            return retrofit.create(BookListService::class.java)
+        }
 
     @Provides
     fun provideBookListRepo(
