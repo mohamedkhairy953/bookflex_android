@@ -5,6 +5,7 @@ plugins {
     id("androidx.room")
     alias(libs.plugins.daggerHilt)
     alias(libs.plugins.compose.compiler)
+    id("io.gitlab.arturbosch.detekt") version "1.23.1"
 }
 
 android {
@@ -48,6 +49,17 @@ android {
     }
     room {
         schemaDirectory("$projectDir/schemas")
+    }
+}
+detekt {
+    toolVersion = "1.23.1" // Specify the version of Detekt
+    source = files("src/main/java", "src/main/kotlin") // Specify input directories
+    config.setFrom(files("$rootDir/config/detekt/detekt.yml")) // Path to Detekt configuration file (optional)
+}
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
+    reports {
+        xml.required.set(true) // Output the result in XML format
+        html.required.set(true) // Output the result in HTML format
     }
 }
 //noinspection UseTomlInstead
