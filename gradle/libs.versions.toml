@@ -37,6 +37,7 @@ foundationCompose = "1.6.8"
 uiComposeVersion = "1.6.8"
 lifecycleViewmodelCompose = "2.8.4"
 runtimeLivedata = "1.6.8"
+detektPluginVersion = "1.23.1"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -95,4 +96,5 @@ jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "k
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+detektPlugin = {id = "io.gitlab.arturbosch.detekt", version.ref = "detektPluginVersion"}
 
