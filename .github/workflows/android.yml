@@ -40,5 +40,17 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: app-build
-        path: app/build/outputs/**  # Upload all output files (APK, AAB, etc.)
+        path: app/build/outputs/apk/debug/app-debug.apk
         retention-days: 30  # Optional: Customize the retention period
+    - name: Install App Center CLI
+      run: npm install -g appcenter-cli
+
+    - name: Upload to App Center
+      env:
+       APPCENTER_API_TOKEN: b298724d4ba3d25c2678b98544e6ee3c0003beaf
+      run: |
+         appcenter distribute release \
+          --file app/build/outputs/apk/debug/app-debug.apk \
+          --app mohamedsallam953/BookFlex \
+          --group "Collaborators" \
+          --token b298724d4ba3d25c2678b98544e6ee3c0003beaf

@@ -85,6 +85,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     modules()
     compose()
+    implementation("com.microsoft.appcenter:appcenter-analytics:5.0.4")
+    implementation("com.microsoft.appcenter:appcenter-crashes:5.0.4")
 }
 
 /**
