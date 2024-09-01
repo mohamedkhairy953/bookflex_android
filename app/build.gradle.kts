@@ -97,6 +97,8 @@ fun DependencyHandlerScope.modules() {
     implementation(project(":di"))
     implementation(project(":booklist"))
     implementation(project(":database"))
+    implementation(project(":bookdetails"))
+    implementation(project(":navigation"))
 }
 
 fun DependencyHandlerScope.retrofit() {

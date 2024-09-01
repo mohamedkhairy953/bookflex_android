@@ -1,5 +1,6 @@
 package com.khairy.booklist.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,12 +18,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.khairy.booklist.model.BookModel
 import com.khairy.booklist.viewmodel.BookListState
 import com.khairy.booklist.viewmodel.BookListViewModel
+import com.khairy.navigation.DetailScreen
 
 @Composable
-fun BookListScreen(viewModel: BookListViewModel = hiltViewModel()) {
+fun BookListScreen(
+    navController: NavController,
+    viewModel: BookListViewModel = hiltViewModel(),
+) {
 
     LaunchedEffect(key1 = true) {
         viewModel.fetchBooks()
@@ -31,7 +37,10 @@ fun BookListScreen(viewModel: BookListViewModel = hiltViewModel()) {
 
     when (bookListState) {
         is BookListState.Success -> {
-            BookListContent(books = (bookListState as BookListState.Success).books)
+            BookListContent(
+                navController = navController,
+                books = (bookListState as BookListState.Success).books
+            )
         }
 
         is BookListState.Error -> {
@@ -56,7 +65,7 @@ fun BookListScreen(viewModel: BookListViewModel = hiltViewModel()) {
 }
 
 @Composable
-private fun BookListContent(books: List<BookModel>) {
+private fun BookListContent(books: List<BookModel>, navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(title = { Text("Book List") })
@@ -67,17 +76,22 @@ private fun BookListContent(books: List<BookModel>) {
             modifier = Modifier.fillMaxSize()
         ) {
             items(books.size) { index ->
-                BookItem(book = books[index])
+                BookItem(book = books[index]) {
+                    navController.navigate(
+                        DetailScreen(bookTitle = books[index].title)
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-fun BookItem(book: BookModel) {
+fun BookItem(book: BookModel, onClick: (BookModel) -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(onClick = { onClick(book) })
             .padding(16.dp)
     ) {
         Text(text = "Title: ${book.title}", style = MaterialTheme.typography.h6)
