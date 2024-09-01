@@ -4,9 +4,8 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import com.khairy.booklist.ui.BookListScreen
+import androidx.navigation.compose.rememberNavController
+import com.khairy.bookflex.navigationscreens.BookFlexNavigationHost
 import com.khairy.booklist.viewmodel.BookListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,8 +17,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val navController = rememberNavController()
             BookFlexTheme {
-                BookListScreen(bookListViewModel)
+                BookFlexNavigationHost(
+                    navController = navController,
+                )
             }
         }
     }

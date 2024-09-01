@@ -1,5 +1,6 @@
 package com.khairy.bookdetails.ui
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -30,8 +31,14 @@ import java.io.IOException
 @Composable
 fun BookDetailsScreen(
     bookDetailsViewModel: BookDetailsViewModel = hiltViewModel(),
-    bookTitle: String,
+    bookTitle: String?,
 ) {
+    val context = LocalContext.current
+    if (bookTitle == null) {
+        Toast.makeText(context, "Book title is null", Toast.LENGTH_SHORT).show()
+        return
+    }
+
     val bookDetails = bookDetailsViewModel.fetchBookDetails(bookTitle).observeAsState()
 
     val downloadState = bookDetailsViewModel.downloadState.collectAsState()
@@ -57,6 +64,7 @@ fun BookDetailsScreen(
         }
     }
 }
+
 @Composable
 private fun SaveFile(body: ResponseBody, title: String) {
     val context = LocalContext.current

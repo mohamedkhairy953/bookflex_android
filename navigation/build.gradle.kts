@@ -2,17 +2,19 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
-    id("androidx.room")
     alias(libs.plugins.daggerHilt)
     alias(libs.plugins.compose.compiler)
+    kotlin("plugin.serialization") version "1.9.10"
 }
 
+
 android {
-    namespace = "com.khairy.booklist"
+    namespace = "com.khairy.navigation"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 24
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -33,14 +35,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-    buildFeatures {
-        viewBinding = true
-        compose = true
-    }
-    room {
-        schemaDirectory("$projectDir/schemas")
-    }
 }
 
 dependencies {
@@ -48,7 +42,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(project(":navigation"))
     testImplementation(libs.junit)
     implementation(libs.kotlin.stdlib)
     androidTestImplementation(libs.androidx.junit)
@@ -66,18 +59,8 @@ dependencies {
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
     compose()
-    room()
-    implementation(project(":di"))
-    implementation(project(":database"))
+    implementation(libs.kotlinx.serialization.json)
 }
-
-fun DependencyHandlerScope.room() {
-    implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.kts)
-    implementation(libs.androidx.room.paging3)
-}
-
 fun DependencyHandlerScope.compose() {
     implementation(libs.androidx.ui.compose)
     implementation(libs.androidx.material.compose)
